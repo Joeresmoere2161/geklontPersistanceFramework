@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <th:block th:insert="~{fragments/default.html :: head}"></th:block>
+    <title>Punchclock: Alle Einträge</title>
+  </head>
+
+  <body>
+    <th:block th:insert="~{fragments/default.html :: header}"></th:block>
+    <main>
+      <h1>Alle Einträge</h1>
+      <th:block th:if="${#lists.isEmpty(entries)}">
+        <span>Keine Einträge</span>
+      </th:block>
+      <th:block th:unless="${#lists.isEmpty(entries)}">
+        <table>
+          <thead>
+            <tr>
+              <th>Beschreibung</th>
+              <th>Von</th>
+              <th>Dauer</th>
+              <th>Bearbeiten</th>
+              <th>Löschen</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="entry : ${entries}">
+              <td th:text="${entry.description}"></td>
+              <td th:text="${entry.check_in}"></td>
+              <td th:text="${entry.duration}"></td>
+              <td><a th:href="@{/edit/{id}(id=${entry.id})}">Bearbeiten</a></td>
+              <td><a th:href="@{/delete/{id}(id=${entry.id})}">Löschen</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </th:block>
+    </main>
+    <th:block th:insert="~{fragments/default.html :: footer}"></th:block>
+  </body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <th:block th:insert="~{fragments/default.html :: head}"></th:block>
+    <title>Punchclock: Eintrag erstellen</title>
+  </head>
+
+  <body>
+    <th:block th:insert="~{fragments/default.html :: header}"></th:block>
+    <main>
+      <h1>Eintrag erstellen</h1>
+      <form action="#" th:action="@{/create}" th:object="${entry}" method="post">
+        <label for="description">Beschreibung</label>
+        <textarea th:field="*{description}" id="description" placeholder="Beschreibung" />
+        <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+        <label for="check_in">Von</label>
+        <input type="datetime-local" th:field="*{check_in}" id="check_in" />
+        <span th:if="${#fields.hasErrors('check_in')}" th:errors="*{check_in}"></span>
+        <label for="duration">Dauer</label>
+        <input type="number" th:field="*{duration}" id="duration" />
+        <span th:if="${#fields.hasErrors('duration')}" th:errors="*{duration}"></span>
+                <button type="submit">Erstellen</button>
+      </form>
+    </main>
+    <th:block th:insert="~{fragments/default.html :: footer}"></th:block>
+  </body>
+
+</html>
