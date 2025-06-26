@@ -148,7 +148,7 @@ const createActionsCell = (id) => {
 }
 
 const renderTags = () => {
-  const tagsSelect = document.querySelector('#tagsSelect');
+  const tagsSelect = document.querySelector('#tagSelect');
 
   if (tags.length > 0) {
     tagsSelect.replaceChildren(...tags.map((tag) => {
@@ -185,7 +185,7 @@ const renderEntries = () => {
     const row = document.createElement('tr');
     row.appendChild(createCell(entry.id));
     row.appendChild(createCell(entry.category.name));
-    row.appendChild(createCell(entry.tag.map((tag) => tag.name).join(', ')));
+    row.appendChild(createCell(entry.tags.map((tag) => tag.name).join(', ')));
     row.appendChild(createCell(new Date(entry.checkIn).toLocaleString()));
     row.appendChild(createCell(entry.duration));
     row.appendChild(createCell(entry.description));
