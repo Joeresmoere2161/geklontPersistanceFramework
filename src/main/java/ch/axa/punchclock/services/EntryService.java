@@ -1,9 +1,6 @@
 package ch.axa.punchclock.services;
 
-import java.time.LocalDateTime;
 import java.util.List;
-
-import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.stereotype.Service;
 
 import ch.axa.punchclock.models.Entry;

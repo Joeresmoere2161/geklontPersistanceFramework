@@ -3,11 +3,6 @@ package ch.axa.punchclock.models;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,7 +11,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "category")
@@ -35,7 +29,7 @@ public class Category {
     private String description;
 
     @OneToMany(mappedBy = "category")
-    private Set<Entry> entrys = new HashSet<>(); 
+    private Set<Entry> entrys = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -68,6 +62,6 @@ public class Category {
     public void setEntrys(Set<Entry> entrys) {
         this.entrys = entrys;
     }
-    
+
 
 }
